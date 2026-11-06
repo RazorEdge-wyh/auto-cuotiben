@@ -91,7 +91,7 @@ cuotiben install-skill --target both     # DSH ~/.dsh/skills + 项目 .claude/sk
 然后对 AI 说：**「开个错题本，给我讲讲这次我到底干了啥」**。
 它会 `scan → lesson → 写讲义 → lint → save → 小测 → grade`，全程用你自己的真实记录。
 
-终端长这样（真实输出，已脱敏）：
+终端长这样（示意输出，实际数字取决于你的会话）：
 
 ```text
 $ cuotiben scan --since 7d
