@@ -117,6 +117,14 @@ cuotiben report --days 7   # 周报（可直接发给用户）
 cuotiben html              # 单文件看板，可打印成 PDF
 ```
 
+## 需要 Word / PDF / PPT 时
+
+讲义默认是 Markdown。用户要「把课程导出成文档」时：
+
+- **Word / PPT**：调用本机自带的 `office-docx` / `office-pptx` 技能，把 `.cuotiben/lessons/*.md` 作为内容源转成 `.docx` / `.pptx`；不要自己手写 Office 二进制。
+- **PDF**：`cuotiben html` 生成看板，再让用户在浏览器里打印为 PDF（看板已做打印样式）。
+- 导出前后都要跑一次 `cuotiben lint`，保证内容没有因为转格式而丢章节。
+
 ## 用户没让开课时
 
 如果用户只是让你干活（写代码、改文档、跑命令），**不要自动开始上课**。干完活后最多加一句：
