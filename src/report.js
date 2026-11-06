@@ -209,7 +209,7 @@ function buildDemoPayload(demoCards) {
       cards: cards.length,
       lessons: cards.filter((card) => card.lesson).length,
       mastered: cards.filter((card) => card.status === 'mastered').length,
-      due: cards.filter((card) => card.due && U.toMs(card.due) <= Date.now()).length,
+      due: cards.filter((card) => card.status !== 'new' && card.due && U.toMs(card.due) <= Date.now()).length,
       avgBlackbox: Math.round(cards.reduce((acc, card) => acc + card.blackbox, 0) / (cards.length || 1)),
       highBlackbox: cards.filter((card) => card.blackbox >= 70).length,
       days: new Set(cards.map((card) => U.localDay(new Date(card.createdAt)))).size,

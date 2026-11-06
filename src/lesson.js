@@ -269,8 +269,14 @@ function gradeCard(card, quality, note = '') {
 
 function dueCards(cards, now = Date.now()) {
   return cards
-    .filter((card) => card.review && card.review.due && U.toMs(card.review.due) <= now)
-    .sort((a, b) => U.toMs(a.review.due) - U.toMs(b.review.due));
+    .filter(
+      (card) =>
+        card.status !== 'new' &&
+        card.review &&
+        card.review.due &&
+        U.toMs(card.review.due) <= now,
+    )
+    .sort((a, b) => (b.blackbox || 0) - (a.blackbox || 0) || U.toMs(a.review.due) - U.toMs(b.review.due));
 }
 
 function renderIndex(store) {

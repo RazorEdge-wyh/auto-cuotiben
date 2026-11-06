@@ -237,7 +237,7 @@
     return copy;
   }
   function isDue(card) {
-    return Boolean(card.due) && Date.parse(card.due) <= Date.now();
+    return card.status !== 'new' && Boolean(card.due) && Date.parse(card.due) <= Date.now();
   }
   function filtered() {
     var q = state.q.trim().toLowerCase();

@@ -68,7 +68,7 @@ const DEMO_CARDS = [
     principles: ['表格与向量化计算', '提示词即规格', 'AI 产出验收'],
     aiDid: ['写出 1 个 Python 脚本（analyze.py）', '执行 2 条命令（pip install pandas、python analyze.py）'],
     lesson: null,
-    due: '2026-11-07T09:40:00+08:00',
+    due: '2026-11-05T09:40:00+08:00',
     lastGrade: 4,
   },
   {
@@ -460,8 +460,18 @@ function cmdReview(args, dir) {
   }
   if (!due.length) {
     print(U.color.green('✓ 今天没有到期卡片。'));
-    const newCards = store.cards.filter((card) => card.status === 'new');
-    if (newCards.length) print(U.color.dim(`还有 ${newCards.length} 张没开课：cuotiben list --status new`));
+    const newCards = store.cards
+      .filter((card) => card.status === 'new')
+      .sort((a, b) => b.blackbox - a.blackbox)
+      .slice(0, 5);
+    if (newCards.length) {
+      print('');
+      print(U.color.yellow(`还有 ${store.cards.filter((card) => card.status === 'new').length} 张没开课。按黑盒指数从高到低，先补这几张：`));
+      for (const card of newCards) {
+        print(`  ${U.color.magenta(card.id.slice(-8))}  [黑盒 ${String(card.blackbox).padStart(3)}]  ${U.shorten(card.title, 40)}`);
+        print(U.color.dim(`            ${card.domainLabel} · cuotiben lesson ${card.id.slice(-8)}`));
+      }
+    }
     return;
   }
   print(U.color.bold(`今天该复习 ${due.length} 张（显示 ${list.length} 张）`));

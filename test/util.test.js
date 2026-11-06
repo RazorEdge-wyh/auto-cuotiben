@@ -11,6 +11,7 @@ test('redact removes common credential shapes', () => {
     'sk-proj-abcdefghijklmnopqrstuvwxyz',
     'Authorization: Bearer abcdefghijklmnopqrstuvwxyz',
     'api_key: "supersecretvalue"',
+    'SecretId:AKIDL3ZrvJn7cCcrtjRzINAsV0GNMAoD9',
     'mail me at someone@example.com',
     'https://user:password123@example.com/path',
   ].join('\n');
@@ -20,6 +21,7 @@ test('redact removes common credential shapes', () => {
   assert.ok(!out.includes('sk-proj-abcdefghijklmnopqrstuvwxyz'));
   assert.ok(!out.includes('abcdefghijklmnopqrstuvwxyz'));
   assert.ok(!out.includes('supersecretvalue'));
+  assert.ok(!out.includes('AKIDL3ZrvJn7cCcrtjRzINAsV0GNMAoD9'));
   assert.ok(!out.includes('someone@example.com'));
   assert.ok(!out.includes('password123'));
   assert.ok(out.includes('REDACTED'));

@@ -272,7 +272,7 @@ function buildTurn(meta) {
     turnIndex: meta.turnIndex,
     cwd: meta.cwd || '',
     file: meta.file || '',
-    title: meta.title || '',
+    title: U.redact(meta.title || ''),
     model: meta.model || '',
     startedAt: startMs ? U.iso(startMs) : '',
     endedAt: endMs ? U.iso(endMs) : '',
