@@ -1,0 +1,6 @@
+# auto-cuotiben
+node_modules/
+.cuotiben/
+*.log
+.DS_Store
+Thumbs.db

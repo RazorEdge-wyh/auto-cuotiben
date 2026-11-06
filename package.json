@@ -1,0 +1,45 @@
+{
+  "name": "auto-cuotiben",
+  "version": "0.1.0",
+  "description": "AI 错题本：自动读取你和 AI 的会话记录，把「AI 代做的活」变成你真正学会的原理课。本地运行，零依赖。",
+  "type": "commonjs",
+  "bin": {
+    "cuotiben": "bin/cuotiben.js"
+  },
+  "engines": {
+    "node": ">=22.15"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "templates",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "demo": "node bin/cuotiben.js demo --out docs/index.html",
+    "lint:lesson": "node bin/cuotiben.js lint"
+  },
+  "keywords": [
+    "skill",
+    "agent-skills",
+    "ai-literacy",
+    "learning",
+    "spaced-repetition",
+    "错题本",
+    "claude-code",
+    "dsh"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RazorEdge-wyh/auto-cuotiben.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RazorEdge-wyh/auto-cuotiben/issues"
+  },
+  "homepage": "https://github.com/RazorEdge-wyh/auto-cuotiben#readme"
+}
